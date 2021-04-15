@@ -1,0 +1,55 @@
+﻿@model IEnumerable<crud_core_m_table_ent.Models.Student>
+
+@{
+    ViewData["Title"] = "StudentList";
+}
+
+<h1>StudentList</h1>
+
+<p>
+    <a asp-action="Create">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Create", new {  id=item.ID, Name=item.Name, Gender=item.Gender, Age=item.Age, Department=item.Department_Name }) |
+                
+                @Html.ActionLink("Delete", "Delete", new {  id=item.ID  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
